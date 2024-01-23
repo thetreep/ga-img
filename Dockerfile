@@ -40,7 +40,7 @@ ENV GOBIN="$GOPATH/bin"
 ENV PATH="$GOBIN:/usr/local/go/bin:${PATH}"
 
 # Create the directories in case they don't exist
-RUN sudo mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
+RUN sudo mkdir -p "$GOPATH/src" "$GOPATH/bin" && sudo chmod -R 777 "$GOPATH"
 
 # Install GolangCI-Lint
 RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.54.2
