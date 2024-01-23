@@ -32,7 +32,7 @@ RUN echo \
 
 # Install Go
 RUN rm -rf /usr/local/go && \
-    curl -L https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz | sudo tar -C /usr/local -xzf - \
+    curl -L https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz | sudo tar -C /usr/local -xzf -
 
 # Set environment variables for Go
 ENV GOPATH="/go"
