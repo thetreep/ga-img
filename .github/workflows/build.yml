@@ -1,0 +1,29 @@
+name: Check and Build Docker Image
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Run every day at 00:00 UTC
+    - cron: '0 0 * * *'
+
+jobs:
+  check-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pull the latest base image
+        run: docker pull ghcr.io/actions/actions-runner:latest
+
+      - name: Build and Push Docker Image
+        run: |
+          docker build -t ghcr.io/thetreep/ga-img:latest .
+          docker push ghcr.io/thetreep/ga-img:latest
