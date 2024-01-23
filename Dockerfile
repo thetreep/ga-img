@@ -48,6 +48,9 @@ RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/i
 # Install go-junit-report
 RUN go install github.com/jstemmer/go-junit-report/v2@latest
 
+# Install gotext
+RUN go install golang.org/x/text/cmd/gotext@latest
+
 # Install Cloud SQL Proxy
 RUN curl -o cloud_sql_proxy https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 && \
     chmod +x cloud_sql_proxy && \
