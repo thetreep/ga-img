@@ -61,6 +61,9 @@ RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.c
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - && \
     sudo apt-get update -y && sudo apt-get install -y google-cloud-sdk
 
+# Install GCloud GKE Auth Plugin
+RUN gcloud components install gke-gcloud-auth-plugin
+
 # Install kubectl
 RUN sudo apt-get install -y kubectl
 
