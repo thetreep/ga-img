@@ -52,12 +52,12 @@ RUN go install github.com/jstemmer/go-junit-report/v2@latest
 RUN go install golang.org/x/text/cmd/gotext@latest
 
 # Install Cloud SQL Proxy
-RUN curl -o cloud_sql_proxy https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 && \
+RUN curl -o cloud_sql_proxy https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.8.2/cloud-sql-proxy.linux.amd64 && \
     chmod +x cloud_sql_proxy && \
     sudo mv cloud_sql_proxy /usr/local/bin/
 
 # Install GCloud CLI
-RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - && \
     sudo apt-get update -y && sudo apt-get install -y google-cloud-sdk
 
@@ -68,7 +68,7 @@ RUN sudo apt-get install google-cloud-sdk-gke-gcloud-auth-plugin
 RUN sudo apt-get install -y kubectl
 
 # Install Migrate tool
-RUN curl -L https://github.com/golang-migrate/migrate/releases/download/v4.15.1/migrate.linux-amd64.tar.gz | tar xvz && \
+RUN curl -L https://github.com/golang-migrate/migrate/releases/download/v4.17.0/migrate.linux-amd64.tar.gz | tar xvz && \
     sudo mv migrate /usr/local/bin/
 
 # Install go-swagger
