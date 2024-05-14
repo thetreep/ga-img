@@ -74,6 +74,9 @@ RUN curl -L https://github.com/golang-migrate/migrate/releases/download/v4.17.0/
 # Install go-swagger
 RUN go install github.com/go-swagger/go-swagger/cmd/swagger@latest
 
+# Install gotestsum
+RUN go install gotest.tools/gotestsum@latest
+
 # Clean up
 RUN sudo apt-get clean && \
     sudo rm -rf /var/lib/apt/lists/*
