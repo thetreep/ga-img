@@ -43,7 +43,7 @@ ENV PATH="$GOBIN:/usr/local/go/bin:${PATH}"
 RUN sudo mkdir -p "$GOPATH/src" "$GOPATH/bin" && sudo chmod -R 777 "$GOPATH"
 
 # Install GolangCI-Lint
-RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.54.2
+RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.61.0
 
 # Install go-junit-report
 RUN go install github.com/jstemmer/go-junit-report/v2@latest
