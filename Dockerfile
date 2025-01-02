@@ -2,7 +2,7 @@
 FROM --platform=linux/amd64 ghcr.io/actions/actions-runner:latest
 
 # Set a specific Go version
-ARG GO_VERSION="1.21.6"
+ARG GO_VERSION="1.23.1"
 
 # Install dependencies
 RUN sudo apt-get update && \
@@ -71,6 +71,9 @@ RUN sudo apt-get install -y kubectl
 # Install Migrate tool
 RUN curl -L https://github.com/golang-migrate/migrate/releases/download/v4.17.0/migrate.linux-amd64.tar.gz | tar xvz && \
     sudo mv migrate /usr/local/bin/
+
+# Install Goose
+RUN go install github.com/pressly/goose/v3/cmd/goose@latest
 
 # Install go-swagger
 RUN go install github.com/go-swagger/go-swagger/cmd/swagger@latest
