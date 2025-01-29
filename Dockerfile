@@ -44,7 +44,7 @@ ENV PATH="$GOBIN:/usr/local/go/bin:${PATH}"
 RUN sudo mkdir -p "$GOPATH/src" "$GOPATH/bin" && sudo chmod -R 777 "$GOPATH"
 
 # Install GolangCI-Lint
-RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.61.0
+RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.63.4
 
 # Install go-junit-report
 RUN go install github.com/jstemmer/go-junit-report/v2@latest
@@ -53,7 +53,7 @@ RUN go install github.com/jstemmer/go-junit-report/v2@latest
 RUN go install golang.org/x/text/cmd/gotext@latest
 
 # Install Cloud SQL Proxy
-RUN curl -o cloud_sql_proxy https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.8.2/cloud-sql-proxy.linux.amd64 && \
+RUN curl -o cloud_sql_proxy https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.14.3/cloud-sql-proxy.linux.amd64 && \
     chmod +x cloud_sql_proxy && \
     sudo mv cloud_sql_proxy /usr/local/bin/
 
@@ -69,7 +69,7 @@ RUN sudo apt-get install -y google-cloud-sdk-gke-gcloud-auth-plugin
 RUN sudo apt-get install -y kubectl
 
 # Install Migrate tool
-RUN curl -L https://github.com/golang-migrate/migrate/releases/download/v4.17.0/migrate.linux-amd64.tar.gz | tar xvz && \
+RUN curl -L https://github.com/golang-migrate/migrate/releases/download/v4.18.2/migrate.linux-amd64.tar.gz | tar xvz && \
     sudo mv migrate /usr/local/bin/
 
 # Install Goose
