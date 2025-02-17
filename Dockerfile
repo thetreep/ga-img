@@ -17,7 +17,8 @@ RUN sudo apt-get update && \
     software-properties-common \
     lsb-release \
     g++-x86-64-linux-gnu \
-    libc6-dev-amd64-cross
+    libc6-dev-amd64-cross \
+    make
 
 # Set up the Docker repository and install Docker-compose plugin
 RUN sudo install -m 0755 -d /etc/apt/keyrings && \
