@@ -2,7 +2,7 @@
 FROM --platform=linux/amd64 ghcr.io/actions/actions-runner:latest
 
 # Set a specific Go version
-ARG GO_VERSION="1.23.1"
+ARG GO_VERSION="1.24.3"
 
 # Install dependencies
 RUN sudo apt-get update && \
