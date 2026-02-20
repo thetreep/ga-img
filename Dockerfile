@@ -89,7 +89,7 @@ RUN ARCH='x64' && \
   rm "node-v$NODE_VERSION-linux-$ARCH.tar.xz" && \
   node --version && npm --version
 
-RUN corepack enable && corepack prepare pnpm@10.27.0 --activate
+RUN sudo corepack enable && corepack prepare pnpm@10.27.0 --activate
 
 ARG PLAYWRIGHT_VERSION="1.57.0"
 RUN npx playwright@${PLAYWRIGHT_VERSION} install-deps chromium
