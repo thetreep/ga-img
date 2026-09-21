@@ -59,15 +59,14 @@ RUN curl -o cloud_sql_proxy https://storage.googleapis.com/cloud-sql-connectors/
     sudo mv cloud_sql_proxy /usr/local/bin/
 
 # Install GCloud CLI
-RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
-    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - && \
-    sudo apt-get update -y && sudo apt-get install -y google-cloud-sdk
-
-# Install GCloud GKE Auth Plugin
-RUN sudo apt-get install -y google-cloud-sdk-gke-gcloud-auth-plugin
-
-# Install kubectl
-RUN sudo apt-get install -y kubectl
+# CLOUDSDK_SKIP_PY_COMPILATION skips byte-compilation to cut install time in CI images
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list && \
+    curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg && \
+    sudo apt-get update -y && \
+    sudo CLOUDSDK_SKIP_PY_COMPILATION=1 apt-get install -y \
+    google-cloud-cli \
+    google-cloud-cli-gke-gcloud-auth-plugin \
+    kubectl
 
 # Install Migrate tool
 RUN curl -L https://github.com/golang-migrate/migrate/releases/download/v4.18.2/migrate.linux-amd64.tar.gz | tar xvz && \
