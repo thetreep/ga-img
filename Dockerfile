@@ -1,6 +1,6 @@
 FROM --platform=linux/amd64 ghcr.io/actions/actions-runner:latest
 
-ARG GO_VERSION="1.27.1"
+ARG GO_VERSION="1.27.3"
 ARG NODE_VERSION="22.14.0"
 ARG PLAYWRIGHT_VERSION="1.57.0"
 ARG GOLANGCI_LINT_VERSION="v2.13.2"
